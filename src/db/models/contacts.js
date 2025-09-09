@@ -33,6 +33,10 @@ const contactsSchema = new Schema(
       required: true,
       enum: ['home', 'personal'],
     },
+    photo: {
+      type: String,
+      default: null,
+    },
   },
   {
     timestamps: true,

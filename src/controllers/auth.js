@@ -1,10 +1,14 @@
 import { ONE_MOUTH } from '../constants/index.js';
+import { SessionsCollection } from '../db/models/session.js';
 import {
   loginUser,
   logoutUser,
   refreshUserSession,
   registerUser,
+  resetPassword,
 } from '../services/auth.js';
+import { requestResetToken } from '../services/auth.js';
+import createHttpError from 'http-errors';
 
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
@@ -74,4 +78,37 @@ export const logoutUserController = async (req, res) => {
   res.clearCookie('refreshToken');
 
   res.status(204).send();
+};
+
+export const requestResetEmailController = async (req, res, next) => {
+  const email = req.body.email;
+
+  if (email === null) {
+    next(
+      createHttpError(500, 'Failed to send the email, please try again later'),
+    );
+    return;
+  }
+
+  await requestResetToken(email);
+
+  res.json({
+    status: 200,
+    message: 'Reset password email has been successfully sent.',
+    data: {},
+  });
+};
+
+export const resetPasswordController = async (req, res, next) => {
+  const user = await resetPassword(req.body);
+
+  await SessionsCollection.deleteMany({
+    userId: user._id,
+  });
+
+  res.json({
+    status: 200,
+    message: 'Password was successfully reset.',
+    data: {},
+  });
 };
