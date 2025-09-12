@@ -4,6 +4,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-docs",
+    "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json",
+    "preview-docs": "redocly preview-docs/openapi.yaml",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
@@ -21,6 +24,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@redocly/cli": "^2.1.0",
     "eslint": "^9.33.0",
     "globals": "^15.1.0",
     "nodemon": "^3.1.10",
@@ -33,6 +37,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "google-auth-library": "^10.3.0",
     "handlebars": "^4.7.8",
     "http-errors": "^2.0.0",
     "joi": "^18.0.1",
@@ -40,6 +45,7 @@
     "mongoose": "^8.17.2",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.6",
-    "pino-http": "^10.5.0"
+    "pino-http": "^10.5.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }

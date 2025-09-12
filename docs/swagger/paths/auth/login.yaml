@@ -1,0 +1,22 @@
+tags:
+  - Auth
+summary: Login user
+description: Logs in a user and returns access and refresh tokens
+operationId: loginUser
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../components/schemas/user.yaml#/LoginUser'
+responses:
+  '200':
+    description: Successfully logged in
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/session.yaml#/LoginResponse'
+  '401':
+    $ref: '../../components/responses/401.yaml'
