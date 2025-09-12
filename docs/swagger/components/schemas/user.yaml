@@ -1,0 +1,80 @@
+RegisterUser:
+  type: object
+  required:
+    - name
+    - email
+    - password
+  properties:
+    name:
+      type: string
+      example: John Doe
+    email:
+      type: string
+      format: email
+      example: john@example.com
+    password:
+      type: string
+      format: password
+      example: P@ssw0rd123
+
+LoginUser:
+  type: object
+  required:
+    - email
+    - password
+  properties:
+    email:
+      type: string
+      format: email
+      example: john@example.com
+    password:
+      type: string
+      format: password
+      example: P@ssw0rd123
+
+RequestResetEmail:
+  type: object
+  required:
+    - email
+  properties:
+    email:
+      type: string
+      format: email
+      example: john@example.com
+
+ResetPassword:
+  type: object
+  required:
+    - token
+    - password
+  properties:
+    token:
+      type: string
+      description: JWT token received in reset password email
+      example: eyJhbGciOiJIUzI1NiIsInR...
+    password:
+      type: string
+      format: password
+      example: NewP@ssw0rd
+
+UserResponse:
+  type: object
+  properties:
+    status:
+      type: integer
+      example: 201
+    message:
+      type: string
+      example: Successfully registered a user!
+    data:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 64c91a35c9d8c60012dfb12a
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: john@example.com

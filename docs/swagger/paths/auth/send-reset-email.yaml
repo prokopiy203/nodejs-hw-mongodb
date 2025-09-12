@@ -1,0 +1,22 @@
+tags:
+  - Auth
+summary: Send password reset email
+description: Sends email with password reset token
+operationId: sendEmailUserLink
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../components/schemas/user.yaml#/RequestResetEmail'
+responses:
+  '200':
+    description: Email sent successfully
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/common.yaml#/DefaultResponse'
+  '404':
+    $ref: '../../components/responses/404.yaml'

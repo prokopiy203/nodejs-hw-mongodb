@@ -1,0 +1,42 @@
+Session:
+  type: object
+  properties:
+    id:
+      type: string
+      example: 64c91a35c9d8c60012dfb12b
+    userId:
+      type: string
+      description: Reference to the user
+      example: 64c91a35c9d8c60012dfb12a
+    accessToken:
+      type: string
+      description: Token for accessing protected resources
+      example: Zx1aK9G3pQ==
+    refreshToken:
+      type: string
+      description: Token for refreshing access
+      example: Wdf8GhG7h1Q==
+    accessTokenValidUntil:
+      type: string
+      format: date-time
+      example: 2025-09-15T12:34:56Z
+    refreshTokenValidUntil:
+      type: string
+      format: date-time
+      example: 2025-10-15T12:34:56Z
+
+LoginResponse:
+  type: object
+  properties:
+    status:
+      type: integer
+      example: 200
+    message:
+      type: string
+      example: Successfully login!
+    data:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          example: Zx1aK9G3pQ==
