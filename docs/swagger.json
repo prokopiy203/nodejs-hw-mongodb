@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://nodejs-hw-mongodb-46jy.onrender.com"
     }
   ],
   "tags": [
@@ -204,6 +204,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           }
@@ -294,6 +297,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -395,10 +401,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "404": {
+            "$ref": "#/components/responses/404",
             "description": "Contact not found"
           }
         }
@@ -431,10 +441,14 @@
           "204": {
             "description": "Contact deleted successfully (no content)"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "404": {
+            "$ref": "#/components/responses/404",
             "description": "Contact not found"
           }
         }
@@ -491,6 +505,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -768,6 +785,30 @@
       }
     },
     "responses": {
+      "400": {
+        "description": "Bad Request - Invalid input or malformed request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Invalid contact data provided"
+                }
+              }
+            }
+          }
+        }
+      },
       "401": {
         "description": "Unauthorized",
         "content": {
