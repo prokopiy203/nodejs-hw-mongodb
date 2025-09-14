@@ -18,5 +18,7 @@ responses:
       application/json:
         schema:
           $ref: '../../components/schemas/user.yaml#/UserResponse'
+  '400':
+    $ref: '../../components/responses/400.yaml'
   '409':
     $ref: '../../components/responses/409.yaml'
