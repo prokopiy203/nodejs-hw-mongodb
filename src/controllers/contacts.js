@@ -14,10 +14,12 @@ import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 
 export const getContactsController = async (req, res) => {
+  console.log('REQ_QUERY', req.query);
+  console.log('REQ_BODY', req.body);
+  console.log('REQ_PARAMS', req.params);
   const { page, perPage } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = parseSortParams(req.query);
   const userId = req.user._id;
-  console.log('Request', req.params);
   const filter = parseFilterParams(req.query);
   const contacts = await getAllContacts({
     page,
@@ -27,7 +29,6 @@ export const getContactsController = async (req, res) => {
     filter,
     userId,
   });
-
   res.json({
     status: 200,
     message: 'Successfully found students!',
